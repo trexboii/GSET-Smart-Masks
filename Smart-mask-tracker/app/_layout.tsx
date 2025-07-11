@@ -6,7 +6,6 @@ import {
 } from "@expo-google-fonts/kumbh-sans";
 import { ActivityIndicator, View, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import Ionicons from '@expo/vector-icons/Ionicons';
 import Index from ".";
 
 export default function RootLayout() {
@@ -67,7 +66,7 @@ export default function RootLayout() {
         }}
       />
       <Tabs.Screen>
-        
+
       </Tabs.Screen>
       <Tabs.Screen 
         name="personal-health"
@@ -114,7 +113,6 @@ export default function RootLayout() {
         }}
       />
 
-        }} />
         <Tabs.Screen
           name = "about"
           options = {{
