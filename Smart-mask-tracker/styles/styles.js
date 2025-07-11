@@ -3,11 +3,11 @@ import { StyleSheet } from "react-native";
 
 const globalStyles = StyleSheet.create({
     container: {
-        backgroundColor:'#25292e',
+        backgroundColor:'white',
         justifyContent:'center',
     },
     header: {
-        backgroundColor: 'white',
+        backgroundColor: 'CFEDFF',
         padding:16,
         alignItems:'center',
         justifyContent:'center'
@@ -15,34 +15,40 @@ const globalStyles = StyleSheet.create({
     title: {
         color:'black',
         fontSize: 26,
-        fontFamily: "Manrope_700Bold",
+        fontFamily: "KumbhSans_700Bold",
+        alignSelf:'center',
     },
     info: {
         color:'black',
         fontSize: 40,
-        fontFamily:"Manrope_400Regular"
+        fontFamily:"KumbhSans_400Regular"
+    },
+    infoAlignedRight: {
+        color:'black',
+        fontSize: 40,
+        fontFamily:"KumbhSans_400Regular",
+        alignSelf:"end",
     },
     data_box:{
-        backgroundColor:'white',
+        backgroundColor:'#E1F3FF',
         borderRadius:10,
-        borderWidth:2,
-        borderColor:'#0377fc',
         padding:16,
         elevation:3,
-        flex: 0.48,
+        //flex: 0.48,
         shadowColor:'#000',
         shadowOpacity:0.1,
         shadowOffset: { width:0, height:2 },
         shadowRadius:4,
         margin:16, 
+        alignItems:"center",
+        justifyContent:"space-between",
+        width:'100%',
     },
     fullBox: {
-        backgroundColor: '#e0e0e0',
+        backgroundColor: '#E1F3FF',
         borderRadius: 10,
-        borderWidth:2,
-        borderColor:'#0377fc',
         padding: 16,
-        marginTop: 16,
+        margin: 16,
         width: '100%', // Make it span full width
         shadowColor:'#000',
         shadowOpacity:0.1,
@@ -52,15 +58,20 @@ const globalStyles = StyleSheet.create({
     label:{
         alignSelf:'center',
         fontSize: 20,
-        fontFamily: "Manrope_400Regular",
+        fontFamily: "KumbhSans_400Regular",
     },
     row:{
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
     },
     small: {
         fontSize:12,
-        fontFamily: "Manrope_300Light",
+        fontFamily: "KumbhSans_300Light",
+    },
+    unit: {
+        fontSize:14,
+        fontFamily: "KumbhSans_300Light",
+        alignSelf:"center",
     }
 }); 
 
