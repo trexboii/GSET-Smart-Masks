@@ -1,8 +1,9 @@
-import {ScrollView, Text, View} from 'react-native';
+import {ScrollView, Text, View, Dimensions, StyleSheet} from 'react-native';
 import globalStyles from "../styles/styles";
 import {Link} from "expo-router"
 import { SafeAreaView } from 'react-native-safe-area-context';
-export default function AirQuality(){
+import React from "react";
+export default function Settings(){
     return (
         <SafeAreaView>
         <ScrollView>
@@ -42,3 +43,42 @@ export default function AirQuality(){
     )
 
 }
+
+
+const SmartMask = () => {
+  return (
+    <View style={styles.container}>
+      {/* Top Bar */}
+      <View style={[styles.bar, { paddingTop: 50 }]}>
+        <Text style={styles.barText}>Home</Text>
+      </View>
+
+      {/* Spacer: main content */}
+      <View style={{ flex: 1 }} />
+
+      {/* Bottom Bar */}
+      <View style={[styles.bar, { paddingBottom: 50 }]}>
+        <Text style={styles.barText}>Home</Text>
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "white",
+  },
+  bar: {
+    backgroundColor: "#F2FAFF",
+    width: Dimensions.get("window").width,
+    height: 150,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  barText: {
+    color: "black",
+    fontSize: 40,
+    fontFamily: "Manrope_400Regular",
+  },
+});
