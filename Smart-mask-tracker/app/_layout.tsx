@@ -2,6 +2,7 @@ import { Stack, Tabs } from "expo-router";
 import { useFonts, KumbhSans_400Regular, KumbhSans_700Bold } from "@expo-google-fonts/kumbh-sans";
 import { ActivityIndicator, View, StyleSheet } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
+import Index from ".";
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -36,13 +37,12 @@ export default function RootLayout() {
         }}
       />
       <Tabs.Screen 
-        name="personal-helath"
+        name="personal-health"
         options={{
           title:"Health",
           tabBarIcon: ({ color,size }) => (
-            <Ionicons name="heart" color={color} size={size}/>
+            <Ionicons name="heart-outline" color={color} size={size}/>
           ),
-
         }} />
       <Tabs.Screen 
         name="air-quality"
@@ -71,6 +71,12 @@ export default function RootLayout() {
           ),
 
         }} />
+        <Tabs.Screen
+          name = "about"
+          options = {{
+            href:null,
+          }}
+        />
     </Tabs>
     
   );

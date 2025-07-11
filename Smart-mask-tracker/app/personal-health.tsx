@@ -23,13 +23,17 @@ export default function PersonalHealth(){
                         <Text style = {globalStyles.label}>This Session</Text>
                         <Image 
                             source={require("../assets/images/breathing-rate-filler.png")}
-                            style = {{width:'80%',alignSelf:"center",margin:10}}
+                            style = {{width:'80%',alignSelf:"center",margin:5}}
+                            resizeMode="contain"
                         />
                 </View>
                 <View style={globalStyles.fullBox}>
                     <Text style = {globalStyles.label}>All Time</Text>
-                    <Text style = {globalStyles.info}>54</Text>
-                    <Text style = {globalStyles.small}>Moderate</Text>
+                    <Image 
+                            source={require("../assets/images/breathing-rate-filler.png")}
+                            style = {{width:'80%',alignSelf:"center",margin:5}}
+                            resizeMode="contain"
+                        />
                 </View>
                 <View style = {globalStyles.fullBox}>
                     <View style = {globalStyles.row}>
