@@ -7,44 +7,92 @@ export default function Index() {
     <ScrollView>
       <View style={globalStyles.container}>
         <View style={globalStyles.data_box}>
-          <Text style={globalStyles.label}>Personal Health</Text>
-          <Text style={globalStyles.home}>Air Quality Index : 123</Text>
-          <Text style={globalStyles.home}>Breathing Rate: 20 BPM</Text>
+          <View style={globalStyles.row}>
+            <Text style={globalStyles.notifis}>Personal Health</Text>
+            <View style={globalStyles.rowLabel}>
+              <Text style={globalStyles.time}>07/09, 12:49 PM</Text>
+              <Ionicons name="close" size={28} color="red" />
+            </View>
+          </View>
+          <Text style={globalStyles.home}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </Text>
         </View>
       </View>
       <View style={globalStyles.container}>
         <View style={globalStyles.data_box}>
-          <Text style={globalStyles.label}>Personal Health</Text>
-          <Text style={globalStyles.home}>Air Quality Index : 123</Text>
-          <Text style={globalStyles.home}>Breathing Rate: 20 BPM</Text>
+          <View style={globalStyles.row}>
+            <Text style={globalStyles.notifis}>Personal Health</Text>
+            <View style={globalStyles.rowLabel}>
+              <Text style={globalStyles.time}>07/09, 12:49 PM</Text>
+              <Ionicons name="close" size={28} color="red" />
+            </View>
+          </View>
+          <Text style={globalStyles.home}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </Text>
         </View>
       </View>
       <View style={globalStyles.container}>
         <View style={globalStyles.data_box}>
-          <Text style={globalStyles.label}>Personal Health</Text>
-          <Text style={globalStyles.home}>Air Quality Index : 123</Text>
-          <Text style={globalStyles.home}>Breathing Rate: 20 BPM</Text>
+          <View style={globalStyles.row}>
+            <Text style={globalStyles.notifis}>Personal Health</Text>
+            <View style={globalStyles.rowLabel}>
+              <Text style={globalStyles.time}>07/09, 12:49 PM</Text>
+              <Ionicons name="close" size={28} color="red" />
+            </View>
+          </View>
+          <Text style={globalStyles.home}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </Text>
         </View>
       </View>
       <View style={globalStyles.container}>
         <View style={globalStyles.data_box}>
-          <Text style={globalStyles.label}>Personal Health</Text>
-          <Text style={globalStyles.home}>Air Quality Index : 123</Text>
-          <Text style={globalStyles.home}>Breathing Rate: 20 BPM</Text>
+          <View style={globalStyles.row}>
+            <Text style={globalStyles.notifis}>Personal Health</Text>
+            <View style={globalStyles.rowLabel}>
+              <Text style={globalStyles.time}>07/09, 12:49 PM</Text>
+              <Ionicons name="close" size={28} color="red" />
+            </View>
+          </View>
+          <Text style={globalStyles.home}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </Text>
         </View>
       </View>
       <View style={globalStyles.container}>
         <View style={globalStyles.data_box}>
-          <Text style={globalStyles.label}>Personal Health</Text>
-          <Text style={globalStyles.home}>Air Quality Index : 123</Text>
-          <Text style={globalStyles.home}>Breathing Rate: 20 BPM</Text>
+          <View style={globalStyles.row}>
+            <Text style={globalStyles.notifis}>Personal Health</Text>
+            <View style={globalStyles.rowLabel}>
+              <Text style={globalStyles.time}>07/09, 12:49 PM</Text>
+              <Ionicons name="close" size={28} color="red" />
+            </View>
+          </View>
+          <Text style={globalStyles.home}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </Text>
         </View>
       </View>
       <View style={globalStyles.container}>
         <View style={globalStyles.data_box}>
-          <Text style={globalStyles.label}>Personal Health</Text>
-          <Text style={globalStyles.home}>Air Quality Index : 123</Text>
-          <Text style={globalStyles.home}>Breathing Rate: 20 BPM</Text>
+          <View style={globalStyles.row}>
+            <Text style={globalStyles.notifis}>Personal Health</Text>
+            <View style={globalStyles.rowLabel}>
+              <Text style={globalStyles.time}>07/09, 12:49 PM</Text>
+              <Ionicons name="close" size={28} color="red" />
+            </View>
+          </View>
+          <Text style={globalStyles.home}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </Text>
         </View>
       </View>
     </ScrollView>

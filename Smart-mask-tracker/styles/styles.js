@@ -82,6 +82,20 @@ const globalStyles = StyleSheet.create({
     fontFamily: "KumbhSans_300Light",
     alignSelf: "right",
   },
+  notifis: {
+    fontSize: 20,
+    fontFamily: "KumbhSans_700Bold",
+    alignSelf: "right",
+  },
+  rowLabel: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+  },
+  time: {
+    fontSize: 13,
+    fontFamily: "KumbhSans_300Light",
+  },
 });
 
 export default globalStyles;

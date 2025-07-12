@@ -1,18 +1,20 @@
 import { ScrollView, Text, View } from "react-native";
 import globalStyles from "../styles/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
-import {useEffect, useState} from 'react';
-import * as Location from 'expo-location'
+import { useEffect, useState } from "react";
+import * as Location from "expo-location";
 export default function AirQuality() {
-    const [location, setLocation] = useState<Location.LocationObject | null>(null);
-    const [errorMsg, setErrorMsg] = useState<string | null>(null);
-    const [city, setCity] = useState<string | null>(null);
-    
-    useEffect(() => {
+  const [location, setLocation] = useState<Location.LocationObject | null>(
+    null
+  );
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [city, setCity] = useState<string | null>(null);
+
+  useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
         return;
       }
 
@@ -20,11 +22,11 @@ export default function AirQuality() {
       setLocation(loc);
       let geo = await Location.reverseGeocodeAsync(loc.coords);
       if (geo.length > 0) {
-        setCity(geo[0].city || geo[0].region || geo[0].country || "Unknown")
+        setCity(geo[0].city || geo[0].region || geo[0].country || "Unknown");
       }
     })();
   }, []);
-  let loc_text = 'Waiting...';
+  let loc_text = "Waiting...";
   if (errorMsg) {
     loc_text = errorMsg;
   } else if (location) {
