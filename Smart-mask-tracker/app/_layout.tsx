@@ -110,17 +110,6 @@ export default function RootLayout() {
         }}
       />
       <Tabs.Screen
-        name="personal-health"
-        options={{
-          title: "Personal Health",
-          tabBarIcon: ({ color }) => (
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
-              <Ionicons name="person-outline" color={color} size={28} />
-            </View>
-          ),
-        }}
-      />
-      <Tabs.Screen
         name="notifications"
         options={{
           title: "Notifications",

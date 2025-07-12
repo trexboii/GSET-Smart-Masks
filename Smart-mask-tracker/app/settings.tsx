@@ -5,7 +5,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import React from "react";
 export default function Settings(){
     return (
-        <SafeAreaView>
         <ScrollView>
         <View style={globalStyles.container}>
             <View style={globalStyles.data_box}>
@@ -39,7 +38,6 @@ export default function Settings(){
             </View>
         </View>
         </ScrollView>
-        </SafeAreaView>
     )
 
 }

@@ -1,17 +1,12 @@
 import {Text,View, ScrollView, Image} from 'react-native';
 import globalStyles from "../styles/styles";
-import { SafeAreaView } from 'react-native-safe-area-context';
 export default function PersonalHealth(){
     return (
         <ScrollView
             style = {{flex:1}}
             contentContainerStyle={globalStyles.container}
          >
-        <SafeAreaView>
             <View style ={globalStyles.container}>
-                <View style = {globalStyles.header}>
-                    <Text style = {globalStyles.title}>Personal Health</Text>
-                </View>
                 <View style={globalStyles.data_box}>
                     <Text style = {globalStyles.label}>Breathing Rate (Current)</Text>
                     <View style = {globalStyles.row}>
@@ -43,7 +38,6 @@ export default function PersonalHealth(){
                 </View>
             </View>
 
-        </SafeAreaView>
         </ScrollView>
     )
 }

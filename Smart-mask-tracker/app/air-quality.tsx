@@ -22,7 +22,6 @@ export default function AirQuality() {
       if (geo.length > 0) {
         setCity(geo[0].city || geo[0].region || geo[0].country || "Unknown")
       }
-        console.log("Reverse geocode result:", geo[0]);
     })();
   }, []);
   let loc_text = 'Waiting...';
@@ -33,19 +32,14 @@ export default function AirQuality() {
   }
 
   return (
-    <SafeAreaView style = {{flex:1}}>
     <ScrollView
         contentContainerStyle={globalStyles.container}
       >
         <View style={globalStyles.container}>
-          <View style={globalStyles.header}>
-            <Text style={globalStyles.title}>Air Quality</Text>
-          </View>
           <View style={globalStyles.row}>
             <View style={globalStyles.data_box}>
               <Text style={globalStyles.label}>Temperature</Text>
               <Text style={globalStyles.info}>54</Text>
-              <Text style={globalStyles.info}>{loc_text}</Text>
             </View>
             <View style={globalStyles.data_box}>
               <Text style={globalStyles.label}>Humidity</Text>
@@ -56,6 +50,7 @@ export default function AirQuality() {
             <Text style={globalStyles.label}>Air Quality</Text>
             <Text style={globalStyles.info}>54</Text>
             <Text style={globalStyles.small}>Moderate</Text>
+            <Text style={globalStyles.info}>{loc_text}</Text>
           </View>
           <View style={globalStyles.fullBox}>
             <Text style={globalStyles.label}>VOC Index</Text>
@@ -73,6 +68,5 @@ export default function AirQuality() {
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
   );
 }

@@ -10,7 +10,7 @@ declare const globalStyles: {
     row: object;
     small: object;
     unit: object;
-    rowAlignedBottom?: object; // Add this if you created it
+    home: object;
 };
 
 export default globalStyles;

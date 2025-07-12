@@ -5,7 +5,7 @@ const globalStyles = StyleSheet.create({
   container: {
     backgroundColor: "white",
     justifyContent: "center",
-    alignItems: "center",
+    width:"100%",
   },
   header: {
     backgroundColor: "CFEDFF",
@@ -35,7 +35,7 @@ const globalStyles = StyleSheet.create({
     borderRadius: 10,
     padding: 16,
     elevation: 3,
-    //flex: 0.48,
+    flex: 0.48,
     shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowOffset: { width: 0, height: 2 },
@@ -43,16 +43,17 @@ const globalStyles = StyleSheet.create({
     margin: 5,
     alignItems: "center",
     justifyContent: "space-between",
-    width: "90%",
+    width: "100%",
   },
   fullBox: {
     backgroundColor: "#E1F3FF",
     borderRadius: 10,
     padding: 16,
-    margin: 16,
-    width: "130%", // Make it span full width
+    marginVertical: 16,
+    width: "90%",
     shadowColor: "#000",
     shadowOpacity: 0.1,
+    alignSelf: "center",
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 4,
   },
@@ -64,6 +65,8 @@ const globalStyles = StyleSheet.create({
   row: {
     flexDirection: "row",
     justifyContent: "space-around",
+    flexWrap: "wrap",
+    width:"100%",
   },
   small: {
     fontSize: 12,
