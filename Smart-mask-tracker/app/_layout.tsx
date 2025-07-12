@@ -65,9 +65,6 @@ export default function RootLayout() {
           ),
         }}
       />
-      <Tabs.Screen>
-
-      </Tabs.Screen>
       <Tabs.Screen 
         name="personal-health"
         options={{
@@ -82,15 +79,6 @@ export default function RootLayout() {
           title: "Air",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="cloud-outline" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="personal-health"
-        options={{
-          title: "Personal",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person-outline" color={color} size={size} />
           ),
         }}
       />
