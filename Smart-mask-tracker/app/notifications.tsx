@@ -1,42 +1,69 @@
-import { View, Text, Dimensions, StyleSheet } from "react-native";
-import React from "react";
-
-const SmartMask = () => {
+import { Link } from "expo-router";
+import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import globalStyles from "@/styles/styles";
+export default function Index() {
   return (
-    <View style={styles.container}>
-      {/* Top Bar */}
-      <View style={[styles.bar, { paddingTop: 50 }]}>
-        <Text style={styles.barText}>Home</Text>
+    <ScrollView>
+      <View style={globalStyles.container}>
+        <View style={globalStyles.data_box}>
+          <Text style={globalStyles.label}>Personal Health</Text>
+          <Text style={globalStyles.home}>Air Quality Index : 123</Text>
+          <Text style={globalStyles.home}>Breathing Rate: 20 BPM</Text>
+        </View>
       </View>
-
-      {/* Spacer: main content */}
-      <View style={{ flex: 1 }} />
-
-      {/* Bottom Bar */}
-      <View style={[styles.bar, { paddingBottom: 50 }]}>
-        <Text style={styles.barText}>Home</Text>
+      <View style={globalStyles.container}>
+        <View style={globalStyles.data_box}>
+          <Text style={globalStyles.label}>Personal Health</Text>
+          <Text style={globalStyles.home}>Air Quality Index : 123</Text>
+          <Text style={globalStyles.home}>Breathing Rate: 20 BPM</Text>
+        </View>
       </View>
-    </View>
+      <View style={globalStyles.container}>
+        <View style={globalStyles.data_box}>
+          <Text style={globalStyles.label}>Personal Health</Text>
+          <Text style={globalStyles.home}>Air Quality Index : 123</Text>
+          <Text style={globalStyles.home}>Breathing Rate: 20 BPM</Text>
+        </View>
+      </View>
+      <View style={globalStyles.container}>
+        <View style={globalStyles.data_box}>
+          <Text style={globalStyles.label}>Personal Health</Text>
+          <Text style={globalStyles.home}>Air Quality Index : 123</Text>
+          <Text style={globalStyles.home}>Breathing Rate: 20 BPM</Text>
+        </View>
+      </View>
+      <View style={globalStyles.container}>
+        <View style={globalStyles.data_box}>
+          <Text style={globalStyles.label}>Personal Health</Text>
+          <Text style={globalStyles.home}>Air Quality Index : 123</Text>
+          <Text style={globalStyles.home}>Breathing Rate: 20 BPM</Text>
+        </View>
+      </View>
+      <View style={globalStyles.container}>
+        <View style={globalStyles.data_box}>
+          <Text style={globalStyles.label}>Personal Health</Text>
+          <Text style={globalStyles.home}>Air Quality Index : 123</Text>
+          <Text style={globalStyles.home}>Breathing Rate: 20 BPM</Text>
+        </View>
+      </View>
+    </ScrollView>
   );
-};
-
-export default SmartMask;
-
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
-  },
-  bar: {
-    backgroundColor: "#F2FAFF",
-    width: Dimensions.get("window").width,
-    height: 150,
-    justifyContent: "center",
+    backgroundColor: "#25292e",
     alignItems: "center",
+    justifyContent: "center",
   },
-  barText: {
-    color: "black",
-    fontSize: 40,
-    fontFamily: "Manrope_400Regular",
+  title: {
+    marginTop: 80,
+  },
+  image: {
+    width: 400,
+    height: 400,
+    overflow: "hidden",
+    alignSelf: "center",
   },
 });
