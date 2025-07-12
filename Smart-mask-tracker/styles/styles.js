@@ -63,7 +63,9 @@ const globalStyles = StyleSheet.create({
   },
   row: {
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
   },
   small: {
     fontSize: 12,
@@ -78,6 +80,20 @@ const globalStyles = StyleSheet.create({
     fontSize: 14,
     fontFamily: "KumbhSans_300Light",
     alignSelf: "right",
+  },
+  notifis: {
+    fontSize: 20,
+    fontFamily: "KumbhSans_700Bold",
+    alignSelf: "right",
+  },
+  rowLabel: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+  },
+  time: {
+    fontSize: 13,
+    fontFamily: "KumbhSans_300Light",
   },
 });
 

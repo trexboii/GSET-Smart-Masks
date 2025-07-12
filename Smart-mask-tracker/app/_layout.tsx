@@ -90,15 +90,7 @@ export default function RootLayout() {
           ),
         }}
       />
-      <Tabs.Screen 
-        name="personal-health"
-        options={{
-          title:"Health",
-          tabBarIcon: ({ color,size }) => (
-            <Ionicons name="heart-outline" color={color} size={size}/>
-          ),
-        }} />
-      <Tabs.Screen 
+      <Tabs.Screen
         name="air-quality"
         options={{
           title: "Air Quality",
@@ -113,10 +105,8 @@ export default function RootLayout() {
         name="personal-health"
         options={{
           title: "Personal Health",
-          tabBarIcon: ({ color }) => (
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
-              <Ionicons name="person-outline" color={color} size={28} />
-            </View>
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="heart-outline" color={color} size={size} />
           ),
         }}
       />
@@ -143,12 +133,12 @@ export default function RootLayout() {
         }}
       />
 
-        <Tabs.Screen
-          name = "about"
-          options = {{
-            href:null,
-          }}
-        />
+      <Tabs.Screen
+        name="about"
+        options={{
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }
