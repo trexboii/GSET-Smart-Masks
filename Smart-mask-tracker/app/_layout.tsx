@@ -27,32 +27,55 @@ export default function RootLayout() {
       screenOptions={{
         tabBarActiveTintColor: "#5ca6ffff",
         tabBarInactiveTintColor: "#b6d7ffff",
-        tabBarStyle: { backgroundColor: "#F6FCFF" },
+        tabBarStyle: {
+          backgroundColor: "#F6FCFF",
+          height: 100,
+          paddingTop: 10,
+        },
+        tabBarItemStyle: {
+          justifyContent: "center",
+          alignItems: "center",
+          paddingVertical: 10,
+        },
+        tabBarLabelStyle: {
+          fontSize: 10,
+          paddingTop: 4,
+        },
+        tabBarLabelPosition: "below-icon",
         headerShown: true,
         headerStyle: {
           backgroundColor: "#F6FCFF",
+          height: 125,
         },
         headerTitleStyle: {
           fontFamily: "KumbhSans_700Bold",
-          fontSize: 20,
+          fontSize: 28,
           color: "#000",
         },
         headerTitleAlign: "center",
         headerLeft: () => (
-          <Ionicons
-            name="checkmark-circle"
-            size={24}
-            color="green"
-            style={{ marginLeft: 15 }}
-          />
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              height: 125,
+              marginLeft: 30,
+            }}
+          >
+            <Ionicons name="checkmark-circle" size={28} color="green" />
+          </View>
         ),
         headerRight: () => (
-          <Ionicons
-            name="battery-full"
-            size={24}
-            color="black"
-            style={{ marginRight: 15 }}
-          />
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              height: 125,
+              marginRight: 30,
+            }}
+          >
+            <Ionicons name="battery-full" size={28} color="black" />
+          </View>
         ),
       }}
     >
@@ -60,8 +83,10 @@ export default function RootLayout() {
         name="index"
         options={{
           title: "Home",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home-outline" color={color} size={size} />
+          tabBarIcon: ({ color }) => (
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+              <Ionicons name="home-outline" color={color} size={28} />
+            </View>
           ),
         }}
       />
@@ -76,9 +101,22 @@ export default function RootLayout() {
       <Tabs.Screen 
         name="air-quality"
         options={{
-          title: "Air",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="cloud-outline" color={color} size={size} />
+          title: "Air Quality",
+          tabBarIcon: ({ color }) => (
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+              <Ionicons name="cloud-outline" color={color} size={28} />
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="personal-health"
+        options={{
+          title: "Personal Health",
+          tabBarIcon: ({ color }) => (
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+              <Ionicons name="person-outline" color={color} size={28} />
+            </View>
           ),
         }}
       />
@@ -86,8 +124,10 @@ export default function RootLayout() {
         name="notifications"
         options={{
           title: "Notifications",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="notifications-outline" color={color} size={size} />
+          tabBarIcon: ({ color }) => (
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+              <Ionicons name="notifications-outline" color={color} size={28} />
+            </View>
           ),
         }}
       />
@@ -95,8 +135,10 @@ export default function RootLayout() {
         name="settings"
         options={{
           title: "Settings",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings-outline" color={color} size={size} />
+          tabBarIcon: ({ color }) => (
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+              <Ionicons name="settings-outline" color={color} size={28} />
+            </View>
           ),
         }}
       />

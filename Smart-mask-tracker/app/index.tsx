@@ -12,6 +12,11 @@ export default function Index() {
           style={styles.image}
           resizeMode="contain"
         />
+        <View style={globalStyles.data_box}>
+          <Text style={globalStyles.label}>LIVE DATA</Text>
+          <Text style={globalStyles.home}>Air Quality Index : 123</Text>
+          <Text style={globalStyles.home}>Breathing Rate: 20 BPM</Text>
+        </View>
       </View>
     </ScrollView>
   );
@@ -24,12 +29,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
-    marginTop: 100,
-    marginBottom: 50,
+    marginTop: 80,
   },
   image: {
-    width: "50%",
+    width: 400,
+    height: 400,
+    overflow: "hidden",
     alignSelf: "center",
-    margin: 10,
   },
 });
