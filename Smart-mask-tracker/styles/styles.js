@@ -96,6 +96,12 @@ const globalStyles = StyleSheet.create({
     fontSize: 13,
     fontFamily: "KumbhSans_300Light",
   },
+  map: {
+    width: "100%",
+    height: 250, // or whatever height you want
+    borderRadius: 10,
+    marginTop: 10,
+  }
 });
 
 export default globalStyles;

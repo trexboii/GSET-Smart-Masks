@@ -14,6 +14,8 @@ declare const globalStyles: {
   notifis: object;
   rowLabel: object;
   time: object;
+  home:object;
+  map:object;
 };
 
 export default globalStyles;

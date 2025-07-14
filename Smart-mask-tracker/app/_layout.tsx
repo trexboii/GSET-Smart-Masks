@@ -123,7 +123,17 @@ export default function RootLayout() {
           ),
         }}
       />
-
+      <Tabs.Screen
+        name = "simulate"
+        options = {{
+          title: "Simulate",
+          tabBarIcon: ({ color }) => (
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+              <Ionicons name="settings-outline" color={color} size={28} />
+            </View> 
+            ),
+        }}
+      />
       <Tabs.Screen
         name="about"
         options={{
