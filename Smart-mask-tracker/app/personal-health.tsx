@@ -1,6 +1,20 @@
 import {Text,View, ScrollView, Image} from 'react-native';
 import globalStyles from "../styles/styles";
+import { useState, useEffect } from "react"
+import { getLatestCo2 } from './api/sendToServer';
 export default function PersonalHealth(){
+    const [latestCo2, setLatestCo2] = useState<number | null>(null);
+    useEffect (() => {
+        const fetchLatest = async() => {
+            const latest = await getLatestCo2()
+            setLatestCo2(latest)
+        }
+        const interval = setInterval(() => {
+            fetchLatest()
+        },5000)
+        return () => clearInterval(interval)
+    }
+    ,[])
     return (
         <ScrollView
             style = {{flex:1}}
@@ -33,7 +47,7 @@ export default function PersonalHealth(){
                 <View style = {globalStyles.fullBox}>
                     <View style = {globalStyles.row}>
                         <Text style = {globalStyles.label}>CO2 Level</Text>
-                        <Text style = {globalStyles.info}>144</Text>
+                        <Text style = {globalStyles.info}>{latestCo2 ?? "Loading..."}</Text>
                     </View>
                 </View>
             </View>

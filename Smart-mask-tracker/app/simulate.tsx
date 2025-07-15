@@ -8,13 +8,13 @@ export default function Simulate() {
   };
 
   const simulateVOC = () => {
-    const lat = 37.7749 + (Math.random() - 0.5) * 0.01;
-    const lng = -122.4194 + (Math.random() - 0.5) * 0.01;
-    const voc = Math.floor(Math.random() * 500);
+    const latitude = 37.7749 + (Math.random() - 0.5) * 0.01;
+    const longitude = -122.4194 + (Math.random() - 0.5) * 0.01;
+    const vocIndex = Math.floor(Math.random() * 500);
     const pm25 = parseFloat((Math.random() * 50).toFixed(2));
     const temperature = 80 - (Math.random() * 10);
     const humidity = 50 + (Math.random() * 5);
-    sendVOCData(lat, lng, voc, pm25,temperature, humidity);
+    sendVOCData(latitude, longitude, vocIndex, pm25,temperature, humidity);
   };
 
   return (

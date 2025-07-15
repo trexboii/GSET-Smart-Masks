@@ -1,38 +1,78 @@
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View, ActivityIndicator, Button } from "react-native";
 import globalStyles from "../styles/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
 import MapView, { Heatmap, PROVIDER_GOOGLE } from 'react-native-maps';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import * as Location from "expo-location";
 import { ProviderContext } from "react-native-maps/lib/decorateMapComponent";
 export default function AirQuality() {
-  const [location, setLocation] = useState<Location.LocationObject | null>(
-    null
+  const BACKEND_URL = "https://smart-mask-production.up.railway.app";
+  const [points, setPoints] = useState<any[]>(
+    []
   );
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [city, setCity] = useState<string | null>(null);
+  const [location, setLocation] = useState<Location.LocationObject | null>(null);
+  const mapRef = useRef<MapView>(null);
+
   const mockHeatData = [
   { latitude: 40.7128, longitude: -74.0060, weight: 100 }, // NYC
   { latitude: 40.7130, longitude: -74.0065, weight: 200 },
   { latitude: 40.7125, longitude: -74.0050, weight: 150 },
   { latitude: 40.7140, longitude: -74.0070, weight: 550 },
 ];
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
-        return;
-      }
+useEffect(() => {
+  let timeoutId: ReturnType<typeof setTimeout>;
 
-      let loc = await Location.getCurrentPositionAsync({});
-      setLocation(loc);
-      let geo = await Location.reverseGeocodeAsync(loc.coords);
-      if (geo.length > 0) {
-        setCity(geo[0].city || geo[0].region || geo[0].country || "Unknown");
-      }
-    })();
-  }, []);
+
+  const fetchAndSchedule = async () => {
+    try {
+      // 👇 Fetch latest heatmap data
+      const res = await fetch(`${BACKEND_URL}/api/datapoints`);
+      const data = await res.json();
+      const heatmapData = data.map((point: any) => ({
+        latitude: point.latitude,
+        longitude: point.longitude,
+        weight: point.vocIndex + point.pm25,
+      }));
+      setPoints(heatmapData);
+      console.log("Fetched points:", heatmapData);
+    } catch (error) {
+      console.error("Error fetching heatmap data:", error);
+      setErrorMsg("Failed to fetch heatmap data");
+    } finally {
+      // 👇 Schedule the next run after this one finishes
+      timeoutId = setTimeout(fetchAndSchedule, 30000); // 30s refresh
+    }
+  };
+
+  const loadEverything = async () => {
+    const { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      setErrorMsg("Permission to access location was denied");
+      return;
+    }
+
+    const loc = await Location.getCurrentPositionAsync({});
+    setLocation(loc);
+
+    const geo = await Location.reverseGeocodeAsync(loc.coords);
+    if (geo.length > 0) {
+      setCity(geo[0].city || geo[0].region || geo[0].country || "Unknown");
+    }
+
+    await fetchAndSchedule(); // initial fetch + starts loop
+  };
+
+  loadEverything();
+
+  return () => {
+    if (timeoutId) clearTimeout(timeoutId);
+  };
+}, []);
+
+
+
   let loc_text = "Waiting...";
   if (errorMsg) {
     loc_text = errorMsg;
@@ -67,18 +107,21 @@ export default function AirQuality() {
             <Text style={globalStyles.label}>Air Quality</Text>
             <Text style={globalStyles.info}>54</Text>
             <Text style={globalStyles.small}>Moderate</Text>
-            <MapView
+            {location && points.length > 0 ? (
+
+              <MapView
               provider = {PROVIDER_GOOGLE} 
               style = {globalStyles.map}
+              ref = {mapRef}
               initialRegion={{
-                latitude: mockHeatData[0].latitude|| 37.7749,
-                longitude: mockHeatData[0].longitude || -127.4192,
+                latitude: points[0]?.latitude || location?.coords.latitude || 37.7749,
+                longitude: points[0]?.longitude || location?.coords.longitude || -122.4194,
                 latitudeDelta: 0.01,
                 longitudeDelta: 0.01,
               }}
             >
               <Heatmap
-                points={mockHeatData}
+                points={points}
                 radius={50}
                 opacity={0.7}
                 gradient={{
@@ -87,7 +130,23 @@ export default function AirQuality() {
                   colorMapSize: 256,
                 }}
               />
+            <Button
+              title="Center on Me"
+              onPress={() => {
+                if (location) {
+                  mapRef.current?.animateToRegion({
+                    latitude: location.coords.latitude,
+                    longitude: location.coords.longitude,
+                    latitudeDelta: 0.01,
+                    longitudeDelta: 0.01,
+                  }, 1000);
+                }
+              }}
+            />
             </MapView>
+
+          ): <ActivityIndicator/>}
+          
           </View>
           <View style={globalStyles.fullBox}>
             <Text style={globalStyles.label}>VOC Index</Text>
