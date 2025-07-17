@@ -21,7 +21,7 @@ export default function PersonalHealth(){
             contentContainerStyle={globalStyles.container}
          >
             <View style ={globalStyles.container}>
-                <View style={globalStyles.data_box}>
+                <View style={globalStyles.smallDataBox}>
                     <Text style = {globalStyles.label}>Breathing Rate (Current)</Text>
                     <View style = {globalStyles.row}>
                         <Text style = {globalStyles.info}>54</Text>

@@ -108,13 +108,13 @@ useEffect(() => {
       >
         <View style={globalStyles.container}>
           <View style={globalStyles.row}>
-            <View style={globalStyles.data_box}>
+            <View style={globalStyles.smallDataBox}>
               <Text style={globalStyles.label}>Temperature</Text>
               <Text style={globalStyles.info}>
                 {latestTemp !== null ? `${latestTemp}°C` : "Loading..."}
               </Text>
             </View>
-            <View style={globalStyles.data_box}>
+            <View style={globalStyles.smallDataBox}>
               <Text style={globalStyles.label}>Humidity</Text>
               <Text style={globalStyles.info}>
                 {latestHumidity !== null ? `${latestHumidity}%` : "Loading..."}
@@ -181,13 +181,13 @@ useEffect(() => {
             </Text>
           </View>
           <View style={globalStyles.row}>
-            <View style={globalStyles.data_box}>
+            <View style={globalStyles.smallDataBox}>
               <Text style={globalStyles.label}>PM2.5 Levels</Text>
               <Text style={globalStyles.info}>
                 {latestPM25 !== null ? latestPM25 : "Loading..."}
               </Text>
             </View>
-            <View style={globalStyles.data_box}>
+            <View style={globalStyles.smallDataBox}>
               <Text style={globalStyles.label}>CO Levels</Text>
               <Text style={globalStyles.info}>😥</Text>
               <Text style={globalStyles.info}>
