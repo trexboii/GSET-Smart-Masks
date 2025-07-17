@@ -1,13 +1,21 @@
-// hooks/useSmartMaskBLE.ts
+
+import { Buffer } from 'buffer';
+import { LocationObject } from 'expo-location';
 import { useEffect, useState } from 'react';
+import { Alert, PermissionsAndroid, Platform } from 'react-native';
 import { BleManager, Device } from 'react-native-ble-plx';
-import { Platform, PermissionsAndroid, Alert } from 'react-native';
 
 const bleManager = new BleManager();
 
-export const useSmartMaskBLE = () => {
+const SERVICE_UUID = '6adf0001-29b1-11ee-be56-0242ac120002';
+const CHAR_CO2_UUID = '6adf0002-29b1-11ee-be56-0242ac120002';
+const CHAR_ENV_UUID = '6adf0003-29b1-11ee-be56-0242ac120002';
+
+const BACKEND_URL = 'https://smart-mask-production.up.railway.app';
+
+export const useSmartMaskBLE = (location: LocationObject | null) => {
   const [connectedDevice, setConnectedDevice] = useState<Device | null>(null);
-  const [co2Level, setCo2Level] = useState<string | null>(null);
+  const [co2Level, setCo2Level] = useState<number | null>(null);
 
   useEffect(() => {
     const requestPermissions = async () => {
@@ -27,7 +35,7 @@ export const useSmartMaskBLE = () => {
           return;
         }
 
-        if (device?.name?.includes('SmartMask')) {
+        if (device?.name?.includes('MagnaClip Smart Mask')) {
           console.log('Found device:', device.name);
           bleManager.stopDeviceScan();
 
@@ -36,19 +44,66 @@ export const useSmartMaskBLE = () => {
             await connected.discoverAllServicesAndCharacteristics();
             setConnectedDevice(connected);
 
-            // Replace with your actual service/characteristic UUIDs
+            // ─── CO₂ Data (uint16) ───────────────────────────────
             connected.monitorCharacteristicForService(
-              '0000181a-0000-1000-8000-00805f9b34fb', // Environmental Sensing (standard UUID)
-              '00002a6e-0000-1000-8000-00805f9b34fb', // CO2 level (mock UUID)
-              (err, characteristic) => {
+              SERVICE_UUID,
+              CHAR_CO2_UUID,
+              async (err, characteristic) => {
                 if (err) {
-                  console.log('Monitor error:', err);
+                  console.log('CO2 monitor error:', err);
                   return;
                 }
 
                 if (characteristic?.value) {
-                  const decoded = atob(characteristic.value); // base64 decode
-                  setCo2Level(decoded);
+                  const buffer = Buffer.from(characteristic.value, 'base64');
+                  const co2 = buffer.readUInt16LE(0);
+                  setCo2Level(co2);
+
+                  try {
+                    await fetch(`${BACKEND_URL}/api/co2`, {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ co2 }),
+                    });
+                    console.log('CO2 sent:', co2);
+                  } catch (err) {
+                    console.error('Error sending CO2:', err);
+                  }
+                }
+              }
+            );
+
+            // ─── Environmental Data (CSV: vocIndex,pm25,temp,humidity) ───
+            connected.monitorCharacteristicForService(
+              SERVICE_UUID,
+              CHAR_ENV_UUID,
+              async (err, characteristic) => {
+                if (err) {
+                  console.log('Env monitor error:', err);
+                  return;
+                }
+
+                if (characteristic?.value) {
+                  const decoded = Buffer.from(characteristic.value, 'base64').toString('utf8');
+                  const [vocIndex, pm25, temperature, humidity] = decoded.split(',').map(parseFloat);
+
+                  try {
+                    await fetch(`${BACKEND_URL}/api/datapoints`, {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({
+                        vocIndex,
+                        pm25,
+                        temperature,
+                        humidity,
+                        latitude: location?.coords.latitude ?? null,
+                        longitude: location?.coords.longitude ?? null,
+                      }),
+                    });
+                    console.log('Env data sent:', { vocIndex, pm25, temperature, humidity });
+                  } catch (err) {
+                    console.error('Error sending Env data:', err);
+                  }
                 }
               }
             );
@@ -64,7 +119,7 @@ export const useSmartMaskBLE = () => {
     return () => {
       bleManager.destroy();
     };
-  }, []);
+  }, [location]);
 
   return { connectedDevice, co2Level };
 };

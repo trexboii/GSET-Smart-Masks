@@ -1,6 +1,6 @@
-import {Text,View, ScrollView, Image} from 'react-native';
+import { useEffect, useState } from "react";
+import { Image, ScrollView, Text, View } from 'react-native';
 import globalStyles from "../styles/styles";
-import { useState, useEffect } from "react"
 import { getLatestCo2 } from './api/sendToServer';
 export default function PersonalHealth(){
     const [latestCo2, setLatestCo2] = useState<number | null>(null);
@@ -47,10 +47,10 @@ export default function PersonalHealth(){
                 <View style = {globalStyles.fullBox}>
                     <View style = {globalStyles.row}>
                         <Text style = {globalStyles.label}>CO2 Level</Text>
-                        <Text style = {globalStyles.info}>{latestCo2 ?? "Loading..."}</Text>
+                        <Text style = {globalStyles.info}>{latestCo2 !== null ? `${latestCo2} ppm` : "Loading..."}</Text>
                     </View>
                 </View>
-            </View>
+                </View>
 
         </ScrollView>
     )
