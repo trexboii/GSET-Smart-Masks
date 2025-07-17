@@ -1,43 +1,42 @@
-import { ScrollView, Text, View, Dimensions, StyleSheet } from "react-native";
-import globalStyles from "../styles/styles";
 import { Link } from "expo-router";
-import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
+import { Dimensions, ScrollView, StyleSheet, Text, View } from "react-native";
+import globalStyles from "../styles/styles";
 export default function Settings() {
   return (
     <ScrollView contentContainerStyle={globalStyles.container}>
-      <View style={[globalStyles.bigDataBox, { height: 95 }]}>
+      <View style={[globalStyles.bigDataBox, { height: 85 }]}>
         <View style={globalStyles.row}>
           <Text style={globalStyles.label}>Notifications</Text>
           <Text style={globalStyles.infoAlignedRight}>On/Off</Text>
         </View>
       </View>
-      <View style={[globalStyles.bigDataBox, { height: 95 }]}>
+      <View style={[globalStyles.bigDataBox, { height: 85 }]}>
         <View style={globalStyles.row}>
           <Text style={globalStyles.label}>Preferred Units</Text>
           <Text style={globalStyles.infoAlignedRight}>On/Off</Text>
         </View>
       </View>
-      <View style={[globalStyles.bigDataBox, { height: 95 }]}>
+      <View style={[globalStyles.bigDataBox, { height: 85 }]}>
         <View style={globalStyles.row}>
           <Text style={globalStyles.label}>Data Sharing</Text>
           <Text style={globalStyles.infoAlignedRight}>On/Off</Text>
         </View>
       </View>
-      <View style={[globalStyles.bigDataBox, { height: 95 }]}>
+      <View style={[globalStyles.bigDataBox, { height: 85 }]}>
         <View style={globalStyles.row}>
           <Text style={globalStyles.label}>Location Services</Text>
           <Text style={globalStyles.infoAlignedRight}>On/Off</Text>
         </View>
       </View>
-      <View style={[globalStyles.bigDataBox, { height: 95 }]}>
+      <View style={[globalStyles.bigDataBox, { height: 85 }]}>
         <View style={globalStyles.row}>
           <Link href="/about" style={globalStyles.label}>
             About This App
           </Link>
         </View>
       </View>
-      <View style={[globalStyles.bigDataBox, { height: 95 }]}>
+      <View style={[globalStyles.bigDataBox, { height: 85 }]}>
         <Text style={globalStyles.label}>RESET</Text>
       </View>
     </ScrollView>

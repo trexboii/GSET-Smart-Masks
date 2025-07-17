@@ -1,12 +1,11 @@
-import { Tabs } from "expo-router";
 import {
-  useFonts,
   KumbhSans_400Regular,
   KumbhSans_700Bold,
+  useFonts,
 } from "@expo-google-fonts/kumbh-sans";
-import { ActivityIndicator, View, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import Index from ".";
+import { Tabs } from "expo-router";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -29,8 +28,8 @@ export default function RootLayout() {
         tabBarInactiveTintColor: "#b6d7ffff",
         tabBarStyle: {
           backgroundColor: "#F6FCFF",
-          height: 100,
-          paddingTop: 10,
+          height: 125,
+          paddingTop: 5,
         },
         tabBarItemStyle: {
           justifyContent: "center",

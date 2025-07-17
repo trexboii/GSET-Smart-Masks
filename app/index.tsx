@@ -1,13 +1,13 @@
+import globalStyles from "@/styles/styles";
 import { useState } from "react";
 import {
+  Image,
+  Pressable,
+  ScrollView,
+  StyleSheet,
   Text,
   View,
-  StyleSheet,
-  Image,
-  ScrollView,
-  Pressable,
 } from "react-native";
-import globalStyles from "@/styles/styles";
 
 export default function Index() {
   const [connected, setConnected] = useState(false); // start as disconnected
@@ -22,7 +22,7 @@ export default function Index() {
         <Pressable onPress={() => setConnected(!connected)}>
           <Image
             source={require("../assets/images/mask-ico.png")}
-            style={{ width: 400, height: 400 }}
+            style={{ width: 350, height: 350 }}
             resizeMode="contain"
           />
         </Pressable>
