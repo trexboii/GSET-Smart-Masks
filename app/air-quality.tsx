@@ -12,7 +12,9 @@ export default function AirQuality() {
   
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [city, setCity] = useState<string | null>(null);
-  const [location, setLocation] = useState<Location.LocationObject | null>(null);
+  const [location, setLocation] = useState<Location.LocationObject | null>(
+    null
+  );
   const mapRef = useRef<MapView>(null);
   const { connectedDevice, co2Level } = useSmartMaskBLE(location);
   const [latestVOC, setLatestVOC] = useState<number | null>(null);
@@ -60,32 +62,30 @@ useEffect(() => {
     }
   };
 
-  const loadEverything = async () => {
-    const { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== "granted") {
-      setErrorMsg("Permission to access location was denied");
-      return;
-    }
+    const loadEverything = async () => {
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
 
-    const loc = await Location.getCurrentPositionAsync({});
-    setLocation(loc);
+      const loc = await Location.getCurrentPositionAsync({});
+      setLocation(loc);
 
-    const geo = await Location.reverseGeocodeAsync(loc.coords);
-    if (geo.length > 0) {
-      setCity(geo[0].city || geo[0].region || geo[0].country || "Unknown");
-    }
+      const geo = await Location.reverseGeocodeAsync(loc.coords);
+      if (geo.length > 0) {
+        setCity(geo[0].city || geo[0].region || geo[0].country || "Unknown");
+      }
 
-    await fetchAndSchedule(); // initial fetch + starts loop
-  };
+      await fetchAndSchedule(); // initial fetch + starts loop
+    };
 
-  loadEverything();
+    loadEverything();
 
-  return () => {
-    if (timeoutId) clearTimeout(timeoutId);
-  };
-}, []);
-
-
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, []);
 
   let loc_text = "Waiting...";
   if (errorMsg) {
@@ -94,11 +94,11 @@ useEffect(() => {
     loc_text = `Latitude: ${location.coords.latitude}\nLongitude: ${location.coords.longitude} \n ${city}`;
   }
   type DataPoint = {
-  latitude: number;
-  longitude: number;
-  vocIndex: number; 
-  pmeLevels:number;
-  timestamp: number;
+    latitude: number;
+    longitude: number;
+    vocIndex: number;
+    pmeLevels: number;
+    timestamp: number;
   };
 
   const [dataPoints, setDataPoints] = useState<DataPoint[]>([]);
@@ -133,8 +133,12 @@ useEffect(() => {
               style = {globalStyles.map}
               ref = {mapRef}
               initialRegion={{
-                latitude: points[0]?.latitude || location?.coords.latitude || 37.7749,
-                longitude: points[0]?.longitude || location?.coords.longitude || -122.4194,
+                latitude:
+                  points[0]?.latitude || location?.coords.latitude || 37.7749,
+                longitude:
+                  points[0]?.longitude ||
+                  location?.coords.longitude ||
+                  -122.4194,
                 latitudeDelta: 0.01,
                 longitudeDelta: 0.01,
               }}
@@ -144,24 +148,27 @@ useEffect(() => {
                 radius={50}
                 opacity={0.7}
                 gradient={{
-                  colors: ['green', 'yellow', 'red'],
+                  colors: ["green", "yellow", "red"],
                   startPoints: [0.1, 0.5, 1],
                   colorMapSize: 256,
                 }}
               />
-            <Button
-              title="Center on Me"
-              onPress={() => {
-                if (location) {
-                  mapRef.current?.animateToRegion({
-                    latitude: location.coords.latitude,
-                    longitude: location.coords.longitude,
-                    latitudeDelta: 0.01,
-                    longitudeDelta: 0.01,
-                  }, 1000);
-                }
-              }}
-            />
+              <Button
+                title="Center on Me"
+                onPress={() => {
+                  if (location) {
+                    mapRef.current?.animateToRegion(
+                      {
+                        latitude: location.coords.latitude,
+                        longitude: location.coords.longitude,
+                        latitudeDelta: 0.01,
+                        longitudeDelta: 0.01,
+                      },
+                      1000
+                    );
+                  }
+                }}
+              />
             </MapView>
 
           ): <ActivityIndicator/>}

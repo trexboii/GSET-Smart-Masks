@@ -5,7 +5,28 @@ const globalStyles = StyleSheet.create({
   container: {
     backgroundColor: "white",
     justifyContent: "center",
-    width:"100%",
+    alignItems: "center",
+    flex: 1,
+    padding: 10,
+  },
+  bigDataBox: {
+    backgroundColor: "#e1f3ff",
+    padding: 16,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    width: 370,
+    marginVertical: 5,
+  },
+  smallDataBox: {
+    backgroundColor: "#e1f3ff",
+    padding: 16,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    width: 175,
+    height: 175,
+    marginVertical: 5,
   },
   header: {
     backgroundColor: "CFEDFF",
@@ -30,33 +51,6 @@ const globalStyles = StyleSheet.create({
     fontFamily: "KumbhSans_400Regular",
     alignSelf: "end",
   },
-  data_box: {
-    backgroundColor: "#E1F3FF",
-    borderRadius: 10,
-    padding: 16,
-    elevation: 3,
-    flex: 0.48,
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-    margin: 5,
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "100%",
-  },
-  fullBox: {
-    backgroundColor: "#E1F3FF",
-    borderRadius: 10,
-    padding: 16,
-    marginVertical: 16,
-    width: "90%",
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    alignSelf: "center",
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 4,
-  },
   label: {
     alignSelf: "center",
     fontSize: 18,
@@ -66,7 +60,7 @@ const globalStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     flexWrap: "wrap",
-    width:"100%",
+    width: "100%",
   },
   small: {
     fontSize: 12,
@@ -101,7 +95,7 @@ const globalStyles = StyleSheet.create({
     height: 250, // or whatever height you want
     borderRadius: 10,
     marginTop: 10,
-  }
+  },
 });
 
 export default globalStyles;

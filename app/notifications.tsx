@@ -6,8 +6,8 @@ export default function Index() {
   return (
     <ScrollView>
       <View style={globalStyles.container}>
-        <View style={globalStyles.data_box}>
-          <View style={globalStyles.row}>
+        <View style={globalStyles.bigDataBox}>
+          <View style={[globalStyles.row, { justifyContent: "space-between" }]}>
             <Text style={globalStyles.notifis}>Personal Health</Text>
             <View style={globalStyles.rowLabel}>
               <Text style={globalStyles.time}>07/09, 12:49 PM</Text>
@@ -19,10 +19,8 @@ export default function Index() {
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </Text>
         </View>
-      </View>
-      <View style={globalStyles.container}>
-        <View style={globalStyles.data_box}>
-          <View style={globalStyles.row}>
+        <View style={globalStyles.bigDataBox}>
+          <View style={[globalStyles.row, { justifyContent: "space-between" }]}>
             <Text style={globalStyles.notifis}>Personal Health</Text>
             <View style={globalStyles.rowLabel}>
               <Text style={globalStyles.time}>07/09, 12:49 PM</Text>
@@ -34,10 +32,8 @@ export default function Index() {
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </Text>
         </View>
-      </View>
-      <View style={globalStyles.container}>
-        <View style={globalStyles.data_box}>
-          <View style={globalStyles.row}>
+        <View style={globalStyles.bigDataBox}>
+          <View style={[globalStyles.row, { justifyContent: "space-between" }]}>
             <Text style={globalStyles.notifis}>Personal Health</Text>
             <View style={globalStyles.rowLabel}>
               <Text style={globalStyles.time}>07/09, 12:49 PM</Text>
@@ -49,10 +45,8 @@ export default function Index() {
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </Text>
         </View>
-      </View>
-      <View style={globalStyles.container}>
-        <View style={globalStyles.data_box}>
-          <View style={globalStyles.row}>
+        <View style={globalStyles.bigDataBox}>
+          <View style={[globalStyles.row, { justifyContent: "space-between" }]}>
             <Text style={globalStyles.notifis}>Personal Health</Text>
             <View style={globalStyles.rowLabel}>
               <Text style={globalStyles.time}>07/09, 12:49 PM</Text>
@@ -64,10 +58,8 @@ export default function Index() {
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </Text>
         </View>
-      </View>
-      <View style={globalStyles.container}>
-        <View style={globalStyles.data_box}>
-          <View style={globalStyles.row}>
+        <View style={globalStyles.bigDataBox}>
+          <View style={[globalStyles.row, { justifyContent: "space-between" }]}>
             <Text style={globalStyles.notifis}>Personal Health</Text>
             <View style={globalStyles.rowLabel}>
               <Text style={globalStyles.time}>07/09, 12:49 PM</Text>
@@ -79,10 +71,8 @@ export default function Index() {
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </Text>
         </View>
-      </View>
-      <View style={globalStyles.container}>
-        <View style={globalStyles.data_box}>
-          <View style={globalStyles.row}>
+        <View style={globalStyles.bigDataBox}>
+          <View style={[globalStyles.row, { justifyContent: "space-between" }]}>
             <Text style={globalStyles.notifis}>Personal Health</Text>
             <View style={globalStyles.rowLabel}>
               <Text style={globalStyles.time}>07/09, 12:49 PM</Text>
