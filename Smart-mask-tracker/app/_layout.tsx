@@ -102,6 +102,18 @@ export default function RootLayout() {
         }}
       />
       <Tabs.Screen
+        name="personal-health"
+        options={{
+          title: "Personal Health",
+          tabBarIcon: ({ color }) => (
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+              <Ionicons name="person-outline" color={color} size={28} />
+            </View>
+          ),
+        }}
+      />
+
+      <Tabs.Screen
         name="notifications"
         options={{
           title: "Notifications",
@@ -124,16 +136,17 @@ export default function RootLayout() {
         }}
       />
       <Tabs.Screen
-        name = "simulate"
-        options = {{
+        name="simulate"
+        options={{
           title: "Simulate",
           tabBarIcon: ({ color }) => (
             <View style={{ justifyContent: "center", alignItems: "center" }}>
               <Ionicons name="settings-outline" color={color} size={28} />
-            </View> 
-            ),
+            </View>
+          ),
         }}
       />
+
       <Tabs.Screen
         name="about"
         options={{

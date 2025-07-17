@@ -4,7 +4,8 @@ declare const globalStyles: {
   title: object;
   info: object;
   infoAlignedRight: object;
-  data_box: object;
+  bigDataBox: object;
+  smallDataBox: object;
   fullBox: object;
   label: object;
   row: object;
@@ -14,8 +15,8 @@ declare const globalStyles: {
   notifis: object;
   rowLabel: object;
   time: object;
-  home:object;
-  map:object;
+  home: object;
+  map: object;
 };
 
 export default globalStyles;
