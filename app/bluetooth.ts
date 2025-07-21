@@ -84,8 +84,12 @@ export const useSmartMaskBLE = (location: LocationObject | null) => {
                 }
 
                 if (characteristic?.value) {
-                  const decoded = Buffer.from(characteristic.value, 'base64').toString('utf8');
-                  const [vocIndex, pm25, temperature, humidity] = decoded.split(',').map(parseFloat);
+                  const buffer = Buffer.from(characteristic.value, 'base64');
+                  const pm25 = buffer.readFloatLE(0);
+                  const vocIndex = buffer.readFloatLE(4);
+                  const temperature = buffer.readFloatLE(8);
+                  const humidity = buffer.readFloatLE(12);
+
 
                   try {
                     await fetch(`${BACKEND_URL}/api/datapoints`, {

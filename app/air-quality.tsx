@@ -6,10 +6,14 @@ import globalStyles from "../styles/styles";
 import { useSmartMaskBLE } from "./bluetooth";
 export default function AirQuality() {
   const BACKEND_URL = "https://smart-mask-production.up.railway.app";
-  const [points, setPoints] = useState<any[]>(
+  const [pointsVOC, setPointsVOC] = useState<any[]>(
     []
   );
-  
+  const [pointsPm25, setPointsPm25] = useState<any[]>(
+    []
+  );
+  const [showVOC, setShowVOC] = useState<boolean>(true);
+  const [showPM25, setShowPM25] = useState<boolean>(true);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [city, setCity] = useState<string | null>(null);
   const [location, setLocation] = useState<Location.LocationObject | null>(
@@ -34,7 +38,7 @@ useEffect(() => {
 
   const fetchAndSchedule = async () => {
     try {
-      // 👇 Fetch latest heatmap data
+      //Fetch latest heatmap data
       const res = await fetch(`${BACKEND_URL}/api/datapoints`);
       const data = await res.json();
       if (Array.isArray(data) && data.length > 0) {
@@ -46,13 +50,18 @@ useEffect(() => {
         setLatestTemp(latest.temperature || null);
         setLatestHumidity(latest.humidity || null);
       }
-      const heatmapData = data.map((point: any) => ({
+      const VOCheatmapData = data.map((point: any) => ({
         latitude: point.latitude,
         longitude: point.longitude,
-        weight: point.vocIndex + point.pm25,
+        weight: point.vocInde || 0,
       }));
-      setPoints(heatmapData);
-      console.log("Fetched points:", heatmapData);
+      setPointsVOC(VOCheatmapData);
+      const Pm25heatmapData = data.map((point:any) => ({
+        latitude: point.latitude,
+        longitude: point.longitude,
+        weight: point.pm25 || 0
+      }));
+      setPointsPm25(Pm25heatmapData);
     } catch (error) {
       console.error("Error fetching heatmap data:", error);
       setErrorMsg("Failed to fetch heatmap data");
@@ -126,26 +135,27 @@ useEffect(() => {
             <Text style = {globalStyles.info}>{connectedDevice ? "Connected" :" Not Connected"}</Text>
             <Text style={globalStyles.info}>54</Text>
             <Text style={globalStyles.small}>Moderate</Text>
-            {location && points.length > 0 ? (
-
+            {location && pointsPm25.length > 0 ? (
+              
               <MapView
               provider = {PROVIDER_GOOGLE} 
               style = {globalStyles.map}
               ref = {mapRef}
               initialRegion={{
                 latitude:
-                  points[0]?.latitude || location?.coords.latitude || 37.7749,
+                  pointsPm25[0]?.latitude || location?.coords.latitude || 37.7749,
                 longitude:
-                  points[0]?.longitude ||
+                  pointsPm25[0]?.longitude ||
                   location?.coords.longitude ||
                   -122.4194,
                 latitudeDelta: 0.01,
                 longitudeDelta: 0.01,
               }}
             >
+            {showPM25 &&
               <Heatmap
-                points={points}
-                radius={50}
+                points={pointsPm25}
+                radius={20}
                 opacity={0.7}
                 gradient={{
                   colors: ["green", "yellow", "red"],
@@ -153,6 +163,19 @@ useEffect(() => {
                   colorMapSize: 256,
                 }}
               />
+            }
+            {showVOC && 
+              <Heatmap
+                points={pointsVOC}
+                radius={20}
+                opacity={0.7}
+                gradient={{
+                  colors: ["blue", "cyan", "white"],
+                  startPoints: [0.1, 0.5, 1],
+                  colorMapSize: 256,
+                }}
+              />
+              }
               <Button
                 title="Center on Me"
                 onPress={() => {
@@ -170,9 +193,9 @@ useEffect(() => {
                 }}
               />
             </MapView>
-
           ): <ActivityIndicator/>}
-          
+          <Button title="Toggle VOC" onPress={() => setShowVOC(prev => !prev)} />
+          <Button title="Toggle PM2.5" onPress={() => setShowPM25(prev => !prev)} />
           </View>
           <View style={globalStyles.fullBox}>
             <Text style={globalStyles.label}>VOC Index</Text>

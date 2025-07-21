@@ -70,7 +70,16 @@ app.get ('/api/co2/latest', async (req,res) => {
   }
 
 });
-
+app.get('/api/co2', async (req, res) => {
+  try {
+    const co2Data = await CO2Reading.find()
+      .sort({ timestamp: 1 }) // Oldest to newest
+      .limit(1000); // Optional: limit for performance
+    res.json(co2Data);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
